@@ -1,0 +1,6 @@
+weather = [
+ {'temp': 22, 'wind': True, 'date': '2017-05-27', 'city': 'Moscow'},
+ {'temp': 23, 'wind': True, 'date': '2017-05-26', 'city': 'Moscow'},
+ {'temp': 19, 'wind': True, 'date': '2017-05-25', 'city': 'Moscow'}
+ ]
+ 

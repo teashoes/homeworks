@@ -1,13 +1,15 @@
-##### 1 про возраст###
-a=int(float(input('Please, enter your age:')))
-if a>0:
-    if a<=7:
+##### 1 про возраст##
+a=(input('Please, enter your age:'))
+if a.isdigit()==False:
+    print('Error')
+elif a.isdigit()==True:
+    if float(a)<=7:
         print('You must be at kindergarden!')
-    elif a<=18:
+    elif float(a)<=18:
         print('You must be studying at school!')
-    elif a<=23:
+    elif float(a)<=23:
         print('You must be studying at university!')
-    elif a>23:
+    else:
         print('You must be working!')
 
 ##### 2 равенство строк####
@@ -21,8 +23,8 @@ def fun(aa,bb):
         print(3)
     elif str(bb)=='learn':   
         print(2)
- 
-ass=fun('22a', '11')
+if __name__ == '__main__':
+    ass=fun('22a', '11')
 
 ##### 3 оценки студентов +1 ####
 students_scores = [1, 21, 19, 6, 5, 6, 22, 34, 55, 34] 
@@ -35,12 +37,19 @@ for score in a:
     print(score)  
 
 ##### 5 посчитать средние значения ####
-##### ??? не знаю, как сделать с набором словарей и с циклом ?? ######
-a=[
+### правильный #######
+school_data = [
     {'class': '4a', 'scores': [3,4,4,5,2]}, 
     {'class':'4b', 'scores': [3,5,6,5,2]}, 
     {'class':'4v', 'scores': [3,4,2,3,2]}
-    ]
+]
+
+z=[] #заведем список куда запишем значения 
+for class_data in school_data:
+    print(class_data['class'], sum(class_data['scores'])/len(class_data['scores']))
+    z.append(sum(class_data['scores'])/len(class_data['scores']))
+print(round(sum(z)/len(school_data), 1))
+
 #сделала в лоб - изменила немного словарь и без цикла 
 a={'4а':[3,4,4,5,2], '4б':[3,5,6,5,2],'4в':[3,4,2,3,2]}
 z = (int(sum(a['4а']))+int(sum(a['4б']))+int(sum(a['4в']))) # сумма баллов по школе
@@ -61,20 +70,23 @@ while True:
         break
     else:
         users.pop()
-
 ####### 7 Валера функция #####
 
 def find_person(name): 
     # name = input('Кто потерялся? ')
     users=["Вася", "Маша", "Петя", "Валера", "Саша", "Даша"]
-    while True:
-        if users[-1] == str(name):
-            print('Нашелся пользователь ' + name)
-            break
-        else:
-            users.pop()
-    
-qq=find_person('Даша')
+    try:
+        while True:
+            if users[-1] == str(name):
+                print('Нашелся пользователь ' + name)
+                break
+            else:
+                users.pop()
+    except IndexError:
+        print('Таких нет')
+
+if __name__ == '__main__':
+    qq=find_person('Даша')
 
 ######### 8 вопрос ответ ########
 ##Написать функцию ask_user() чтобы помощью input() спрашивать пользователя “Как дела?”, пока он не ответит “Хорошо”
@@ -84,7 +96,8 @@ def ask_user(question):
         question = input('Как дела? ')
     print('Молодец')
 
-qq=ask_user(str(input('как дела?')))
+if __name__ == '__main__':
+    qq=ask_user(str(input('как дела?')))
 
 ######### 9 ответ вопрос ##############
 ##При помощи функции get_answer() отвечать на вопросы пользователя в ask_user(), пока он не скажет “Пока!
@@ -92,21 +105,26 @@ qq=ask_user(str(input('как дела?')))
 def ask_answer(answer):
     while answer != 'Пока':
         answer=str(input('Как дела? '))
-
-qq=ask_answer(str(input('как дела? ')))
+if __name__ == '__main__':
+    qq=ask_answer(str(input('как дела? ')))
 
 ################ 10 исключения #######
+############ переделать##########
 def ask_user(question):
-    try:
-        ####  если введено число -> исключение
-        # while False:   
-            # question.isdigit()    
-            while question != 'Хорошо':
+    try: 
+        while question.lower() != 'хорошо':
+            if question.isdigit():
+                raise ValueError() 
                 question = input('Как дела? ')
     except ValueError:
         print('Я гуманитарий..')
     except KeyboardInterrupt:
         print('Вы чегооо?..')
-    print('Пока')
+    print(':) Пока')
 
-qq=ask_user(input('как дела? '))
+if __name__ == '__main__':
+    qq=ask_user(input('как дела? '))
+
+def get_answer(question):
+    answer = {"привет": "И тебе привет!", "как дела": "Лучше всех", "пока": "Увидимся"}
+    return answer.get(question) 

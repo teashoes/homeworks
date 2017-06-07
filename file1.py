@@ -1,7 +1,7 @@
 ##### 1 про возраст###
-a=int(float(input('Please, enter your age:')))
+a=int(input('Please, enter your age:'))
 if a>0:
-    if a<=7:
+    if itn(a<=7:
         print('You must be at kindergarden!')
     elif a<=18:
         print('You must be studying at school!')
@@ -18,11 +18,13 @@ def fun(aa,bb):
     if str(aa) == str(bb):
         print('1')
     elif len(aa)>len(bb):
-        print(3)
+        print('3')
     elif str(bb)=='learn':   
-        print(2)
- 
-ass=fun('22a', '11')
+        print('2')
+    else:
+        print('None')
+if __name__ == '__main__':
+    ass=fun('22', '11')
 
 ##### 3 оценки студентов +1 ####
 students_scores = [1, 21, 19, 6, 5, 6, 22, 34, 55, 34] 

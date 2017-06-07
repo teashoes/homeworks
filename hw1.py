@@ -1,16 +1,19 @@
 ##### 1 про возраст##
 a=(input('Please, enter your age:'))
 if a.isdigit()==False:
-    print('Error')
+    print('This cannot be your age!')
 elif a.isdigit()==True:
-    if float(a)<=7:
-        print('You must be at kindergarden!')
-    elif float(a)<=18:
-        print('You must be studying at school!')
-    elif float(a)<=23:
-        print('You must be studying at university!')
-    else:
-        print('You must be working!')
+    if int(a)>=0:
+        if int(a)<=7:
+            print('You must be at kindergarden!')
+        elif int(a)<=18:
+            print('You must be studying at school!')
+        elif int(a)<=23:
+            print('You must be studying at university!')
+        else:
+            print('You must be working!')
+    else: print('You cannot be that age!')
+
 
 ##### 2 равенство строк####
 #Если строки одинаковые, возвращает 1.
